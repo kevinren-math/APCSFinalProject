@@ -1,0 +1,5 @@
+Apples 5 10
+Bananas 10 5
+Carrots 30 10
+Delicacies 40 10
+Easter 80 20
