@@ -3,8 +3,8 @@ public abstract class GameScript {
 	
 	/* Innate game characteristics */
 	Character player;
-	Scanner s;
-	PrintStream out;
+	final Scanner s;
+	final PrintStream out;
 	
 	/* Standard variables */
 	public final String STATS = "S";
@@ -17,42 +17,41 @@ public abstract class GameScript {
 		selectChar();
 	}
 	
-	/* initialize the game */
-	public final void selectChar() {
-		List<Character> list = Character.loadFromFile(charFile);
-		out.println("Enter the number of the character you select:");
-		out.println("Type / Start HP / Start MP");
-		for (int i = 0; i < list.size(); i++) {
-			out.printf("%2d. %s\n", i+1, list.get(i).description());
-		}
-		int selected = s.nextInt();
-		player = list.get(selected-1);
-	}
-	
 	/* main gameplay loop */
 	public abstract String prompt();
 	public abstract String state();
 	
-	public void game() {
+	/* returns true if survives, false if dies */
+	public Status game() {
 		while (true) {
 			System.out.println(prompt());
 			String res = s.nextLine();
 			if (res.equals(STATS)) {
 				out.println(state());
 			} else if (res.equals(QUIT)) {
-				break;
+				return Status.QUIT;
 			} else {
-				respond(res);
+				if (!respond(res))
+					return Status.DIE;
 			}
 		}
+		return Status.SURVIVE;
 	}
 	
-	public abstract void respond(String str);
+	public abstract boolean respond(String str);
 	
 	public int rand(int a, int b) {
 		return (int)(Math.random() * (b - a + 1)) + a;
 	}
 	
-	/* ending */
-	public abstract void end();
+	public int diceRoll(int a) {
+		return rand(1, a);
+	}
+	
+	/* lose a level */
+	public abstract void die();
+}
+
+enum Status {
+	SURVIVE, DIE, QUIT;
 }

@@ -59,19 +59,24 @@ public class Character {
 		return String.format("%-10s%4d%4d", type, startHp, startMp);
 	}
 	
-	public static List<Character> loadFromFile(String name) throws IOException {
+	public static List<Character> loadFromFile(String name) {
 		//Format: startHP startMP type
-		BufferedReader br = new BufferedReader(new FileReader(name));
-		String str;
-		List<Character> list = new ArrayList<>();
-		StringTokenizer st;
-		while ((str = br.readLine()) != null) {
-			st = new StringTokenizer(str);
-			String type = st.nextToken();
-			int hp = Integer.parseInt(st.nextToken());
-			int mp = Integer.parseInt(st.nextToken());
-			list.add(new Character(hp, mp, type));
+		try {
+			BufferedReader br = new BufferedReader(new FileReader(name));
+			String str;
+			List<Character> list = new ArrayList<>();
+			StringTokenizer st;
+			while ((str = br.readLine()) != null) {
+				st = new StringTokenizer(str);
+				String type = st.nextToken();
+				int hp = Integer.parseInt(st.nextToken());
+				int mp = Integer.parseInt(st.nextToken());
+				list.add(new Character(hp, mp, type));
+			}
+			return list;
+		} catch (IOException) {
+			System.err.println("Cannot load file.");
 		}
-		return list;
+		return null;
 	}
 }
