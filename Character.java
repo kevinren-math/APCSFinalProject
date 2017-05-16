@@ -1,11 +1,8 @@
 import java.util.*;
 import java.io.*;
 public class Character {
-	private int startHp;
-	private int hp;
-	private int startMp;
-	private int mp;
-	private String type;
+	private Hashtable<String, Integer> startTable;
+	private Hashtable<String, Integer> table;
 	
 	public Character(int theHp, int theMp, String theType) {
 		startHp = theHp;
