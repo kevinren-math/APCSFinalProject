@@ -1,4 +1,5 @@
 import java.util.*;
+import java.io.*;
 public abstract class GameScript {
 	
 	/* Innate game characteristics */
@@ -9,12 +10,11 @@ public abstract class GameScript {
 	/* Standard variables */
 	public final String STATS = "S";
 	public final String QUIT = "Q";
-	public final charFile = "characters.txt";
+	public final String charFile = "characters.txt";
 	
 	public GameScript() {
 		s = new Scanner(System.in);
 		out = System.out;
-		selectChar();
 	}
 	
 	/* main gameplay loop */
@@ -31,14 +31,16 @@ public abstract class GameScript {
 			} else if (res.equals(QUIT)) {
 				return Status.QUIT;
 			} else {
-				if (!respond(res))
+				Status st = respond(res);
+				if (st == Status.DIE)
 					return Status.DIE;
+				else if (st == Status.COMPLETE)
+					return Status.SURVIVE;
 			}
 		}
-		return Status.SURVIVE;
 	}
 	
-	public abstract boolean respond(String str);
+	public abstract Status respond(String str);
 	
 	public int rand(int a, int b) {
 		return (int)(Math.random() * (b - a + 1)) + a;
@@ -53,5 +55,5 @@ public abstract class GameScript {
 }
 
 enum Status {
-	SURVIVE, DIE, QUIT;
+	COMPLETE, SURVIVE, DIE, QUIT;
 }

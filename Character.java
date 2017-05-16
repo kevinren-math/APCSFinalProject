@@ -74,8 +74,8 @@ public class Character {
 				list.add(new Character(hp, mp, type));
 			}
 			return list;
-		} catch (IOException) {
-			System.err.println("Cannot load file.");
+		} catch (IOException ex) {
+			System.err.println("Cannot load file " + name + ".");
 		}
 		return null;
 	}
