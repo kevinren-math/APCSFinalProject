@@ -18,10 +18,10 @@ public abstract class GameScript {
 	}
 	
 	/* main gameplay loop */
-	public abstract String prompt();
-	public abstract String state();
+	public abstract String prompt(); //ask the character what he/she wants to do
+	public abstract String state(); //current state of character (e.g. stats)
 	
-	/* returns COMPLETE if passes, false if dies */
+	/* returns COMPLETE if passes, DIE if dies */
 	public Status game() {
 		while (true) {
 			System.out.println(prompt());
