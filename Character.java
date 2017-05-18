@@ -5,10 +5,15 @@ public class Character {
 	private Map<String, Integer> table;
 	
 	public Character(int hp, int mp) {
-		startTable = new Hashmap<>();
-		startTable.put("HP", hp);
-		startTable.put("MP", mp);
-		table = startTable.clone();
+		startTable = new HashMap<>();
+		table = new HashMap<>();
+		initStat("HP", hp);
+		initStat("MP", mp);
+	}
+	
+	public void initStat(String stat, int val) {
+		startTable.put(stat, val);
+		table.put(stat, val);
 	}
 	
 	/* returns true if still alive after taking some damage */
@@ -31,10 +36,10 @@ public class Character {
 	}
 	
 	/* if able to subtract stat, will do so and returns true
-	   otherwise, does not subtract MP and returns false
+	   otherwise, does not subtract stat and returns false
 	*/
 	public boolean decreaseStat(String stat, int damage) {
-		if (damage >= table.get(stat)) {
+		if (damage > table.get(stat)) {
 			return false;
 		} else {
 			table.put(stat, table.get(stat) - damage);
@@ -50,13 +55,12 @@ public class Character {
 		table.put(stat, hp);
 	}
 	
+	/* This should be overriden by subclasses */
 	public String type() {
 		return "Character";
 	}
 	
 	public String status() {
-		return String.format("HP: %d/%d\nMP: %d/%d\nType: %s",
-				hp, startHp, mp, startMp, type);
 		String str;
 		for (String s : table.keySet())
 			str += String.format("%s: %d/%d\n", s, table.get(s), startTable.get(s));
