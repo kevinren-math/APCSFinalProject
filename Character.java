@@ -4,7 +4,7 @@ public class Character {
 	private Map<String, Integer> startTable;
 	private Map<String, Integer> table;
 	
-	public Character(int hp, int mp, String type) {
+	public Character(int hp, int mp) {
 		startTable = new Hashmap<>();
 		startTable.put("HP", hp);
 		startTable.put("MP", mp);
@@ -50,13 +50,18 @@ public class Character {
 		table.put(stat, hp);
 	}
 	
+	public String type() {
+		return "Character";
+	}
+	
 	public String status() {
 		return String.format("HP: %d/%d\nMP: %d/%d\nType: %s",
 				hp, startHp, mp, startMp, type);
-	}
-	
-	public String description() {
-		return String.format("%-10s%4d%4d", type, startHp, startMp);
+		String str;
+		for (String s : table.keySet())
+			str += String.format("%s: %d/%d\n", s, table.get(s), startTable.get(s));
+		str += "Type: " + type();
+		return str;
 	}
 	
 	public static List<Character> loadFromFile(String name) {
@@ -71,7 +76,16 @@ public class Character {
 				String type = st.nextToken();
 				int hp = Integer.parseInt(st.nextToken());
 				int mp = Integer.parseInt(st.nextToken());
-				list.add(new Character(hp, mp, type));
+				if (type.equals("Cleric"))
+					list.add(new Cleric(hp, mp));
+				else if (type.equals("Mage"))
+					list.add(new Mage(hp, mp));
+				else if (type.equals("Fighter"))
+					list.add(new Fighter(hp, mp));
+				else if (type.equals("Barbarian"))
+					list.add(new Barbarian(hp, mp));
+				else
+					System.err.println("Unrecognized type " + type);
 			}
 			return list;
 		} catch (IOException ex) {
