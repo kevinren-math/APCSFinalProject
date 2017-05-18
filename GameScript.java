@@ -42,14 +42,6 @@ public abstract class GameScript {
 	
 	public abstract Status respond(String str);
 	
-	public int rand(int a, int b) {
-		return (int)(Math.random() * (b - a + 1)) + a;
-	}
-	
-	public int diceRoll(int a) {
-		return rand(1, a);
-	}
-	
 	/* lose a level */
 	public abstract void die();
 }
