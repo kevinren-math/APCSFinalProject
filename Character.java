@@ -1,50 +1,53 @@
 import java.util.*;
 import java.io.*;
 public class Character {
-	private Hashtable<String, Integer> startTable;
-	private Hashtable<String, Integer> table;
+	private Map<String, Integer> startTable;
+	private Map<String, Integer> table;
 	
-	public Character(int theHp, int theMp, String theType) {
-		startHp = theHp;
-		hp = theHp;
-		startMp = theMp;
-		mp = theMp;
-		type = theType;
+	public Character(int hp, int mp, String type) {
+		startTable = new Hashmap<>();
+		startTable.put("HP", hp);
+		startTable.put("MP", mp);
+		table = startTable.clone();
 	}
 	
 	/* returns true if still alive after taking some damage */
 	public boolean takeDamage(int damage) {
-		if (damage >= hp) {
-			hp = 0;
+		if (damage >= table.get("HP")) {
+			table.put("HP", 0);
 			return false;
 		} else {
-			hp -= damage;
+			table.put("HP", table.get("HP") - damage);
 			return true;
 		}
 	}
 	
 	public void restoreHp(int health) {
-		hp += health;
+		int hp = table.get("HP") + health;
+		int startHp = startTable.get("HP");
 		if (hp > startHp)
 			hp = startHp;
+		table.put("HP", hp);
 	}
 	
-	/* if able to subtract MP, will do so and returns true
+	/* if able to subtract stat, will do so and returns true
 	   otherwise, does not subtract MP and returns false
 	*/
-	public boolean subtractMp(int damage) {
-		if (damage > mp) {
+	public boolean decreaseStat(String stat, int damage) {
+		if (damage >= table.get(stat)) {
 			return false;
 		} else {
-			mp -= damage;
+			table.put(stat, table.get(stat) - damage);
 			return true;
 		}
 	}
 	
-	public void restoreMp(int health) {
-		mp += health;
-		if (mp > startMp)
-			mp = startMp;
+	public void increaseStat(String stat, int health) {
+		int hp = table.get(stat) + health;
+		int startHp = startTable.get(stat);
+		if (hp > startHp)
+			hp = startHp;
+		table.put(stat, hp);
 	}
 	
 	public String status() {
