@@ -3,6 +3,7 @@ import java.io.*;
 public class Character {
 	private Map<String, Integer> startTable;
 	private Map<String, Integer> table;
+	private final MAXLEVEL = 9;
 	
 	public Character(int hp, int mp) {
 		startTable = new HashMap<>();
@@ -13,46 +14,61 @@ public class Character {
 	
 	public void initStat(String stat, int val) {
 		startTable.put(stat, val);
-		table.put(stat, val);
+		put(stat, val);
 	}
 	
 	/* returns true if still alive after taking some damage */
 	public boolean takeDamage(int damage) {
-		if (damage >= table.get("HP")) {
-			table.put("HP", 0);
+		if (damage >= get("HP")) {
+			put("HP", 0);
 			return false;
 		} else {
-			table.put("HP", table.get("HP") - damage);
+			table.put("HP", get("HP") - damage);
 			return true;
 		}
 	}
 	
 	public void restoreHp(int health) {
-		int hp = table.get("HP") + health;
-		int startHp = startTable.get("HP");
+		int hp = get("HP") + health;
+		int startHp = getInit("HP");
 		if (hp > startHp)
 			hp = startHp;
-		table.put("HP", hp);
+		put("HP", hp);
 	}
 	
 	/* if able to subtract stat, will do so and returns true
 	   otherwise, does not subtract stat and returns false
 	*/
 	public boolean decreaseStat(String stat, int damage) {
-		if (damage > table.get(stat)) {
+		if (damage > get(stat)) {
 			return false;
 		} else {
-			table.put(stat, table.get(stat) - damage);
+			put(stat, get(stat) - damage);
 			return true;
 		}
 	}
 	
 	public void increaseStat(String stat, int health) {
-		int hp = table.get(stat) + health;
-		int startHp = startTable.get(stat);
+		int hp = get(stat) + health;
+		int startHp = getInit(stat);
 		if (hp > startHp)
 			hp = startHp;
-		table.put(stat, hp);
+		put(stat, hp);
+	}
+	
+	/* get stat */
+	public int get(String stat) {
+		return table.get(stat);
+	}
+	
+	/* get inital stat */
+	public int getInit(String stat) {
+		return startTable.get(stat);
+	}
+	
+	/* put stat */
+	public void put(String stat, int x) {
+		table.put(stat, x);
 	}
 	
 	/* This should be overriden by subclasses */
@@ -66,6 +82,20 @@ public class Character {
 			str += String.format("%s: %d/%d\n", s, table.get(s), startTable.get(s));
 		str += "Type: " + type();
 		return str;
+	}
+	
+	public void increaseXP(int xp) {
+		int totXP = get("XP") + xp;
+		int startXP = getInit("XP");
+		int level = get("lvl");
+		while (totXP >= startXP && level < MAXLEVEL) { //Level up
+			totXP -= startXP;
+			startXP++;
+			level++;
+		}
+		put("XP", totXP);
+		startTable.put("XP", startXP);
+		put("lvl", level);
 	}
 	
 	public static List<Character> loadFromFile(String name) {
