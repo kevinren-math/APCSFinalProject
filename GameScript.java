@@ -21,7 +21,7 @@ public abstract class GameScript {
 	public abstract String prompt();
 	public abstract String state();
 	
-	/* returns true if survives, false if dies */
+	/* returns COMPLETE if passes, false if dies */
 	public Status game() {
 		while (true) {
 			System.out.println(prompt());
@@ -35,7 +35,7 @@ public abstract class GameScript {
 				if (st == Status.DIE)
 					return Status.DIE;
 				else if (st == Status.COMPLETE)
-					return Status.SURVIVE;
+					return Status.COMPLETE;
 			}
 		}
 	}
