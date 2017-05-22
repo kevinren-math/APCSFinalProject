@@ -88,7 +88,6 @@ public class Character {
 		for (String s : table.keySet())
 			if (!s.equals("MP") && !s.equals("HP"))
 				str += String.format("\n%s: %d/%d", s, get(s), getInit(s));
-		
 		return str;
 	}
 	

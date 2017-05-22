@@ -17,6 +17,20 @@ public class Cleric extends Character
 	{
 		return "Cleric";
 	}
+	
+	public String status(){
+		String str = "Type: " + type();
+		str += String.format("\n%s: %d/%d", "HP", get("HP"), getInit("HP"));
+		str += String.format("\n%s: %d/%d", "MP", get("MP"), getInit("MP"));
+		str += 
+		
+		
+		
+		for (String s : table.keySet())
+			if (!s.equals("MP") && !s.equals("HP"))
+				str += String.format("\n%s: %d/%d", s, get(s), getInit(s));
+		return str;
+	}
 
 	
 	
