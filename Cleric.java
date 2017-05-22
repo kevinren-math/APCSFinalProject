@@ -1,4 +1,4 @@
-import GameUtility.*;
+//import static GameUtility.*;
 
 public class Cleric extends Character
 {
@@ -6,11 +6,11 @@ public class Cleric extends Character
 	{
 		int con = 8 + diceRoll(8);
 		int wis = diceRoll(8); 
-		initStat("con", con);
-		initStat("dice", 8);
-		super(con, 2);	
-		initStat("wis", wis); //damage
-		initStat("search", 2); //investigates
+		initStat("HP", con);
+		initStat("MP", 2);
+		initStat("Dice", 8);
+		initStat("Wis", wis); //damage
+		initStat("Search", 2); //investigates
 	}
 	
 	public String type()

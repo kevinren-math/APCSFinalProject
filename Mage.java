@@ -1,4 +1,4 @@
-import GameUtility.*;
+//import GameUtility.*;
 
 public class Mage extends Character
 {
@@ -6,19 +6,17 @@ public class Mage extends Character
 	{
 		int con = 6 + diceRoll(6);
 		int ability = diceRoll(6);
-		initStat("con", con);
-		initStat("dice", 6);
-		super(con, 2);	
-		initStat("ability", ability); //attack
-		initStat("search", 1);
+		initStat("HP", con);
+		initStat("MP", 2);
+		initStat("Dice", 6);	
+		initStat("Ability", ability); //attack
+		initStat("Search", 1);
 	}
 	
 	public String type()
 	{
 		return "Mage";
 	}
-	
-	public void 
 	
 	
 }

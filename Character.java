@@ -5,12 +5,11 @@ public class Character {
 	private Map<String, Integer> table;
 	private final int MAXLEVEL = 9;
 	
-	public Character(int hp, int mp) {
+	/* default constructor */
+	public Character() {
 		startTable = new HashMap<>();
 		table = new HashMap<>();
-		initStat("HP", hp);
-		initStat("MP", mp);
-		initStat("lvl", 1);
+		initStat("Lvl", 1);
 	}
 	
 	public void initStat(String stat, int val) {
@@ -83,17 +82,20 @@ public class Character {
 	}
 	
 	public String status() {
-		String str;
+		String str = "Type: " + type();
+		str += String.format("\n%s: %d/%d", "HP", get("HP"), getInit("HP"));
+		str += String.format("\n%s: %d/%d", "MP", get("MP"), getInit("MP"));
 		for (String s : table.keySet())
-			str += String.format("%s: %d/%d\n", s, get(s), getInit(s));
-		str += "Type: " + type();
+			if (!s.equals("MP") && !s.equals("HP"))
+				str += String.format("\n%s: %d/%d", s, get(s), getInit(s));
+		
 		return str;
 	}
 	
 	public void increaseXP(int xp) {
 		int totXP = get("XP") + xp;
 		int startXP = getInit("XP");
-		int level = get("lvl");
+		int level = get("Lvl");
 		while (totXP >= startXP && level < MAXLEVEL) { //Level up
 			totXP -= startXP;
 			startXP++;
@@ -101,7 +103,7 @@ public class Character {
 		}
 		put("XP", totXP);
 		putInit("XP", startXP);
-		put("lvl", level);
+		put("Lvl", level);
 	}
 	
 	//set MP to full amount
@@ -119,16 +121,16 @@ public class Character {
 			while ((str = br.readLine()) != null) {
 				st = new StringTokenizer(str);
 				String type = st.nextToken();
-				int hp = Integer.parseInt(st.nextToken());
-				int mp = Integer.parseInt(st.nextToken());
+				//int hp = Integer.parseInt(st.nextToken());
+				//int mp = Integer.parseInt(st.nextToken());
 				if (type.equals("Cleric"))
-					list.add(new Cleric(hp, mp));
+					list.add(new Cleric());
 				else if (type.equals("Mage"))
-					list.add(new Mage(hp, mp));
+					list.add(new Mage());
 				else if (type.equals("Fighter"))
-					list.add(new Fighter(hp, mp));
+					list.add(new Fighter());
 				else if (type.equals("Barbarian"))
-					list.add(new Barbarian(hp, mp));
+					list.add(new Barbarian());
 				else
 					System.err.println("Unrecognized type " + type);
 			}
@@ -137,5 +139,14 @@ public class Character {
 			System.err.println("Cannot load file " + name + ".");
 		}
 		return null;
+	}
+	
+	/* Utility methods */
+	public static int rand(int a, int b) {
+		return (int)(Math.random() * (b - a + 1)) + a;
+	}
+	
+	public static int diceRoll(int a) {
+		return rand(1, a);
 	}
 }
