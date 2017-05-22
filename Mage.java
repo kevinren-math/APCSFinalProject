@@ -1,28 +1,24 @@
 import GameUtility.*;
 
-public class Cleric extends Character
+public class Mage extends Character
 {
-	public Cleric ()
+	public Mage ()
 	{
-		int Con = 10 + diceRoll(10);
-		int Atk = diceRoll(10);
-		initStat("Con", Con);
-		initStat("Dice", 10);
-		super(Con, 2);	
-		initStat("Attack", Atk);
-		initStat("Search", 2);
+		int con = 6 + diceRoll(6);
+		int ability = diceRoll(6);
+		initStat("con", con);
+		initStat("dice", 6);
+		super(con, 2);	
+		initStat("ability", ability); //attack
+		initStat("search", 1);
 	}
 	
-
-
 	public String type()
 	{
-		return "Cleric";
+		return "Mage";
 	}
 	
-	public LevelUP()
-	{
-	}
+	public void 
 	
 	
 }

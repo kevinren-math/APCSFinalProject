@@ -1,25 +1,23 @@
 import GameUtility.*;
 
-public class Cleric extends Character
+public class Barbarian extends Character
 {
-	public Cleric ()
+	public Barbarian ()
 	{
-		int Con = 8 + diceRoll(8);
-		initStat("Con", Con);
-		super(Con, 2);	
-		initStat("Wis", 2);
-		initStat("Search", 2);
+		int con = 12 + diceRoll(12);
+		int armor = diceRoll(12); 
+		initStat("con", con);
+		initStat("dice", 6);
+		super(con, 2);	
+		initStat("armor", armor); //armor
+		initStat("search", 3);
 	}
 	
 
 
 	public String type()
 	{
-		return "Cleric";
-	}
-	
-	public LevelUP()
-	{
+		return "Barbarian";
 	}
 	
 	
