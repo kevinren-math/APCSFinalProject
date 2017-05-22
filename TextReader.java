@@ -42,13 +42,33 @@ public class TextReader
 		{
 			response = 3;
 		}
-		else if (findKeyword(statement,"investigare") >= 0)
+		else if (findKeyword(statement,"investigate") >= 0)
 		{
 			response = 4;
 		}
+		else if (findKeyword(statement,"heal")>= 0)
+		{
+			response = 5
+		}
+		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"cleric") >=0)
+		{
+			response = 6
+		}
+		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"fighter") >=0)
+		{
+			response = 7
+		}
+		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"barbarian") >=0)
+		{
+			response = 8
+		}
+		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"mage") >=0)
+		{
+			response = 9
+		}
 		else
 		{
-			response = 5;
+			response =10 ;
 		}
 		return response;
 	}
