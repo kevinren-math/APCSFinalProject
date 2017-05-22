@@ -20,8 +20,8 @@ public class Cleric extends Character
 	
 	public String status(){
 		String str = "Type: " + type();
-		str += String.format("\n%s: %d/%d", "HP", get("HP"), getInit("HP"));
-		str += String.format("\n%s: %d/%d", "MP", get("MP"), getInit("MP"));
+		str += "\n" + formatStat("HP");
+		str += "\n" + formatStat("MP");
 		str += 
 		
 		

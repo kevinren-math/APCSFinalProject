@@ -83,12 +83,16 @@ public class Character {
 	
 	public String status() {
 		String str = "Type: " + type();
-		str += String.format("\n%s: %d/%d", "HP", get("HP"), getInit("HP"));
-		str += String.format("\n%s: %d/%d", "MP", get("MP"), getInit("MP"));
+		str += "\n" + formatStat("HP");
+		str += "\n" + formatStat("MP");
 		for (String s : table.keySet())
 			if (!s.equals("MP") && !s.equals("HP"))
-				str += String.format("\n%s: %d/%d", s, get(s), getInit(s));
+				str += "\n" + formatStat(s);
 		return str;
+	}
+	
+	public String formatStat(String stat) {
+		return String.format("%s: %d/%d", stat, get(stat), getInit(stat));
 	}
 	
 	public void increaseXP(int xp) {
