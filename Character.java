@@ -3,13 +3,14 @@ import java.io.*;
 public class Character {
 	private Map<String, Integer> startTable;
 	private Map<String, Integer> table;
-	private final MAXLEVEL = 9;
+	private final int MAXLEVEL = 9;
 	
 	public Character(int hp, int mp) {
 		startTable = new HashMap<>();
 		table = new HashMap<>();
 		initStat("HP", hp);
 		initStat("MP", mp);
+		initStat("lvl", 1);
 	}
 	
 	public void initStat(String stat, int val) {
@@ -23,12 +24,12 @@ public class Character {
 			put("HP", 0);
 			return false;
 		} else {
-			table.put("HP", get("HP") - damage);
+			put("HP", get("HP") - damage);
 			return true;
 		}
 	}
 	
-	public void restoreHp(int health) {
+	public void restoreHP(int health) {
 		int hp = get("HP") + health;
 		int startHp = getInit("HP");
 		if (hp > startHp)
@@ -71,6 +72,11 @@ public class Character {
 		table.put(stat, x);
 	}
 	
+	/* put initial stat */
+	public void putInit(String stat, int x) {
+		startTable.put(stat, x);
+	}
+	
 	/* This should be overriden by subclasses */
 	public String type() {
 		return "Character";
@@ -79,7 +85,7 @@ public class Character {
 	public String status() {
 		String str;
 		for (String s : table.keySet())
-			str += String.format("%s: %d/%d\n", s, table.get(s), startTable.get(s));
+			str += String.format("%s: %d/%d\n", s, get(s), getInit(s));
 		str += "Type: " + type();
 		return str;
 	}
@@ -94,8 +100,13 @@ public class Character {
 			level++;
 		}
 		put("XP", totXP);
-		startTable.put("XP", startXP);
+		putInit("XP", startXP);
 		put("lvl", level);
+	}
+	
+	//set MP to full amount
+	public void resetMP() {
+		put("MP", getInit("MP"));
 	}
 	
 	public static List<Character> loadFromFile(String name) {
