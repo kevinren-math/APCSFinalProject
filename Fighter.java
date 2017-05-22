@@ -4,24 +4,22 @@ public class Fighter extends Character
 {
 	public Fighter ()
 	{
-		int Con = 8 + diceRoll(10);
-		initStat("Con", Con);
-		initStat("Dice", 10);
-		super(Con, 2);	
-		initStat("Wis", 2);
-		initStat("Search", 2);
+		int con = 10 + diceRoll(10);
+		int attack = diceRoll(10);
+		initStat("con", con);
+		initStat("dice", 10);
+		super(con, 2);	
+		initStat("attack", attack); //attack
+		initStat("search", 1);
 	}
 	
 
 
 	public String type()
 	{
-		return "Cleric";
+		return "Fighter";
 	}
-	
-	public LevelUP()
-	{
-	}
+
 	
 	
 }
