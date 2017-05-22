@@ -95,6 +95,10 @@ public class Character {
 		return String.format("%s: %d/%d", stat, get(stat), getInit(stat));
 	}
 	
+	public String formatLevel() {
+		return String.format("%s: %d", "Lvl", get("Lvl"));
+	}
+	
 	public void increaseXP(int xp) {
 		int totXP = get("XP") + xp;
 		int startXP = getInit("XP");
