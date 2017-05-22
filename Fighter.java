@@ -1,15 +1,14 @@
 import GameUtility.*;
 
-public class Cleric extends Character
+public class Fighter extends Character
 {
-	public Cleric ()
+	public Fighter ()
 	{
-		int Con = 8 + diceRoll(8);
-		int Wis = diceRoll(8);
+		int Con = 8 + diceRoll(10);
 		initStat("Con", Con);
-		initStat("Dice", 8);
+		initStat("Dice", 10);
 		super(Con, 2);	
-		initStat("Wis", Wis);
+		initStat("Wis", 2);
 		initStat("Search", 2);
 	}
 	
