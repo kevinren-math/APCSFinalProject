@@ -21,7 +21,7 @@ public class Cleric extends Character
 	public String status()
 	{
 		String str = "Type: " + type();
-		str += "\n" + "Lvl";
+		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
 		str += "\n" + formatStat("Heal");

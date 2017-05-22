@@ -7,7 +7,7 @@ public class Mage extends Character
 		int con = 6 + diceRoll(6);
 		int ability = diceRoll(6);
 		initStat("HP", con);
-		initStat("MP", 2);
+		initStat("MP", 3);
 		initStat("Dice", 6);	
 		initStat("Ability Power", ability); //attack
 		initStat("Search", 1);
@@ -21,7 +21,7 @@ public class Mage extends Character
 	public String status()
 	{
 		String str = "Type: " + type();
-		str += "\n" + formatStat("Lvl");
+		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
 		str += "\n" + formatStat("Ability Power");
