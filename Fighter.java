@@ -20,6 +20,17 @@ public class Fighter extends Character
 	{
 		return "Fighter";
 	}
+	
+	public String status()
+	{
+		String str = "Type: " + type();
+		str += "\n" + formatStat("Lvl");
+		str += "\n" + formatStat("HP");
+		str += "\n" + formatStat("MP");
+		str += "\n" + formatStat("Attack");
+		str += "\n" + formatStat("Search");
+		return str;
+	}
 
 	
 	
