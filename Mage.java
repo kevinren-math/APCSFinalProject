@@ -1,5 +1,3 @@
-//import GameUtility.*;
-
 public class Mage extends Character
 {
 	public Mage ()
