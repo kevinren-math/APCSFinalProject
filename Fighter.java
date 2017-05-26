@@ -1,5 +1,3 @@
-//import GameUtility.*;
-
 public class Fighter extends Character
 {
 	int con;

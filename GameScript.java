@@ -3,14 +3,13 @@ import java.io.*;
 public abstract class GameScript {
 	
 	/* Innate game characteristics */
-	Character player;
+	static Character player;
 	final Scanner s;
 	final PrintStream out;
 	
 	/* Standard variables */
 	public final String STATS = "S";
 	public final String QUIT = "Q";
-	public final String charFile = "characters.txt";
 	
 	public GameScript() {
 		s = new Scanner(System.in);
@@ -18,16 +17,22 @@ public abstract class GameScript {
 	}
 	
 	/* main gameplay loop */
-	public abstract String prompt(); //ask the character what he/she wants to do
-	public abstract String state(); //current state of character (e.g. stats)
+	
+	/* ask the character what he/she wants to do */
+	public abstract void prompt();
+	
+	/* current state of character (e.g. stats) */
+	public void state() {
+		out.println(player.status());
+	}
 	
 	/* returns COMPLETE if passes, DIE if dies */
 	public Status game() {
 		while (true) {
-			System.out.println(prompt());
+			prompt();
 			String res = s.nextLine();
 			if (res.equals(STATS)) {
-				out.println(state());
+				state();
 			} else if (res.equals(QUIT)) {
 				return Status.QUIT;
 			} else {
@@ -40,6 +45,7 @@ public abstract class GameScript {
 		}
 	}
 	
+	/* respond to selection */
 	public abstract Status respond(String str);
 	
 	/* lose a level */

@@ -1,5 +1,3 @@
-//import static GameUtility.*;
-
 public class Cleric extends Character
 {
 	int con;

@@ -91,6 +91,16 @@ public class Character {
 		return str;
 	}
 	
+	public String initStats() {
+		String str = "Type: " + type();
+		str += "\n" + formatInitStat("HP");
+		str += "\n" + formatInitStat("MP");
+		for (String s : table.keySet())
+			if (!s.equals("MP") && !s.equals("HP"))
+				str += "\n" + formatInitStat(s);
+		return str;
+	}
+	
 	public String formatStat(String stat) {
 		return String.format("%s: %d/%d", stat, get(stat), getInit(stat));
 	}
@@ -103,6 +113,10 @@ public class Character {
 	
 	public String formatLevel() {
 		return String.format("%s: %d", "Lvl", get("Lvl"));
+	}
+	
+	public String formatInitStat(String stat) {
+		return String.format("%s: %d", stat, getInit(stat));
 	}
 	
 	public void increaseXP(int xp) {
@@ -119,13 +133,22 @@ public class Character {
 		put("Lvl", level);
 	}
 	
-	//set MP to full amount
+	/* set MP to full amount */
 	public void resetMP() {
 		put("MP", getInit("MP"));
 	}
 	
-	public static List<Character> loadFromFile(String name) {
-		//Format: startHP startMP type
+	/* Utility methods */
+	public static int rand(int a, int b) {
+		return (int)(Math.random() * (b - a + 1)) + a;
+	}
+	
+	public static int diceRoll(int a) {
+		return rand(1, a);
+	}
+	
+	/*public static List<Character> loadFromFile(String name) {
+		//List of types, separated by lines
 		try {
 			BufferedReader br = new BufferedReader(new FileReader(name));
 			String str;
@@ -134,8 +157,6 @@ public class Character {
 			while ((str = br.readLine()) != null) {
 				st = new StringTokenizer(str);
 				String type = st.nextToken();
-				//int hp = Integer.parseInt(st.nextToken());
-				//int mp = Integer.parseInt(st.nextToken());
 				if (type.equals("Cleric"))
 					list.add(new Cleric());
 				else if (type.equals("Mage"))
@@ -152,14 +173,6 @@ public class Character {
 			System.err.println("Cannot load file " + name + ".");
 		}
 		return null;
-	}
+	}*/
 	
-	/* Utility methods */
-	public static int rand(int a, int b) {
-		return (int)(Math.random() * (b - a + 1)) + a;
-	}
-	
-	public static int diceRoll(int a) {
-		return rand(1, a);
-	}
 }
