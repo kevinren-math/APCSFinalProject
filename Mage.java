@@ -2,10 +2,13 @@
 
 public class Mage extends Character
 {
+	int con;
+	int ability;
 	public Mage ()
 	{
-		int con = 6 + diceRoll(6);
-		int ability = diceRoll(6);
+		super();
+		con = 6 + diceRoll(6);
+		ability = diceRoll(6);
 		initStat("HP", con);
 		initStat("MP", 3);
 		initStat("Dice", 6);	
@@ -18,13 +21,19 @@ public class Mage extends Character
 		return "Mage";
 	}
 	
+	public int getAbility()
+	{
+		return ability;
+	}
+
+	
 	public String status()
 	{
 		String str = "Type: " + type();
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatStat("Ability Power");
+		str += "\n" + formatSkills("Ability Power");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

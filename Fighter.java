@@ -2,11 +2,13 @@
 
 public class Fighter extends Character
 {
+	int con;
+	int attack;
+	
 	public Fighter ()
 	{
-		super();
-		int con = 10 + diceRoll(10);
-		int attack = diceRoll(10);
+		con = 10 + diceRoll(10);
+		attack = diceRoll(10);
 		initStat("HP", con);
 		initStat("MP", 1);
 		initStat("Dice", 10);
@@ -14,11 +16,14 @@ public class Fighter extends Character
 		initStat("Search", 1);
 	}
 	
-
-
 	public String type()
 	{
 		return "Fighter";
+	}
+	
+	public int getAttack()
+	{
+		return attack;
 	}
 	
 	public String status()
@@ -27,7 +32,7 @@ public class Fighter extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatStat("Attack");
+		str += "\n" + formatSkills("Attack");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

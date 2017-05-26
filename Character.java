@@ -95,6 +95,12 @@ public class Character {
 		return String.format("%s: %d/%d", stat, get(stat), getInit(stat));
 	}
 	
+	public String formatSkills(String stat)
+	{
+		return String.format("%s: %d", stat, get(stat));
+	}
+
+	
 	public String formatLevel() {
 		return String.format("%s: %d", "Lvl", get("Lvl"));
 	}

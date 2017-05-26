@@ -1,21 +1,26 @@
 public class Barbarian extends Character
 {
+	int con;
+	int armor; 
 	public Barbarian ()
 	{
-		int con = 12 + diceRoll(12);
-		int armor = diceRoll(12); 
+		con = 12 + diceRoll(12);
+		armor = diceRoll(12); 
 		initStat("HP", con);
 		initStat("MP", 0);
 		initStat("Dice", 6);
 		initStat("Armor", armor); //armor
 		initStat("Search", 3);
 	}
-	
-
 
 	public String type()
 	{
 		return "Barbarian";
+	}
+	
+	public int getArmor()
+	{
+		return armor;
 	}
 	
 	public String status()
@@ -24,7 +29,7 @@ public class Barbarian extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatStat("Armor");
+		str += "\n" + formatSkills("Armor");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

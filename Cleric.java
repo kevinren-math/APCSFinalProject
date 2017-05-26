@@ -2,10 +2,12 @@
 
 public class Cleric extends Character
 {
+	int con;
+	int heal;
 	public Cleric ()
 	{
-		int con = 8 + diceRoll(8);
-		int heal = diceRoll(8); 
+		con = 8 + diceRoll(8);
+		heal = diceRoll(8); 
 		initStat("HP", con);
 		initStat("MP", 2);
 		initStat("Dice", 8);
@@ -18,13 +20,18 @@ public class Cleric extends Character
 		return "Cleric";
 	}
 	
+	public int getHeal()
+	{
+		return heal;
+	}
+	
 	public String status()
 	{
 		String str = "Type: " + type();
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatStat("Heal");
+		str += "\n" + formatSkills("Heal");
 		str += "\n" + formatStat("Search");
 		return str;
 	}
