@@ -1,6 +1,6 @@
 enum Response {
-	Null, Nothing, Attack, Defend, Investigate, Heal, HealBarbarian,
-	HealCleric, HealMage, HealFighter, Other
+	Attack, Defend, Investigate, Heal, HealBarbarian,
+	HealCleric, HealMage, HealFighter, Status, None
 }
 
 public class TextReader
@@ -29,51 +29,55 @@ public class TextReader
 		 
 		if (statement.length() == 0)
 		{
-			response = Response.Null;
+			response = Response.None; //0
 		}
 		
 		else if (findKeyword(statement,"nothing") >= 0)
 		{
-			response = Response.Nothing;
+			response = Response.None; //1
 		}
 
 
 		else if (findKeyword(statement,"attack") >= 0)
 		{
-			response = Response.Attack;
+			response = Response.Attack; //2
 		}
 
 		else if (findKeyword(statement,"defend") >= 0)
 		{
-			response = Response.Defend;
+			response = Response.Defend; //3
 		}
 		else if (findKeyword(statement,"investigate") >= 0)
 		{
-			response = Response.Investigate;
+			response = Response.Investigate; //4
 		}
 		else if (findKeyword(statement,"heal")>= 0)
 		{
-			response = Response.Heal;
+			response = Response.Heal; //5
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"cleric") >=0)
 		{
-			response = Response.HealCleric;
+			response = Response.HealCleric; //6
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"fighter") >=0)
 		{
-			response = Response.HealFighter;
+			response = Response.HealFighter; //7
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"barbarian") >=0)
 		{
-			response = Response.HealBarbarian;
+			response = Response.HealBarbarian; //8
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"mage") >=0)
 		{
-			response = Response.HealMage;
+			response = Response.HealMage; //9
+		}
+		else if (findKeyword(statement,"status") >= 0)
+		{
+			response = Response.Status; //11
 		}
 		else
 		{
-			response = Response.Other;
+			response = Response.None; //10
 		}
 		return response;
 	}
