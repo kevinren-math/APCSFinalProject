@@ -4,19 +4,19 @@ public class DungeonMaster extends Character
 		super();
 		
 		Barbarian barbarian = new Barbarian();
-		int armor = (barbarian.get("armor")) + ((barbarian.get("armor"))/2);
+		int armor = barbarian.get("Armor") * 3 / 2;
 		initStat("Armor", armor);
 		
 		Cleric cleric = new Cleric();
-		int heal = (cleric.getHeal()) + ((cleric.getHeal())/2);
+		int heal = cleric.get("Heal") * 3 / 2;
 		initStat("Heal", heal);
 		
 		Fighter fighter = new Fighter();
-		int attack = (fighter.getAttack()) + ((fighter.getAttack())/2);
+		int attack = fighter.get("Attack") * 3 / 2;
 		initStat("Attack", attack);
 		
 		Mage mage = new Mage();
-		int ability = (mage.getAbility()) + ((mage.getAbility())/2) ;
+		int ability = mage.get("Ability Power") * 3 / 2;
 		initStat("Ability Power", ability);
 	}
 	
