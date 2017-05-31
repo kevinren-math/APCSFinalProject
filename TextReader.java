@@ -6,7 +6,7 @@ public class TextReader
 	 * 	Gives a response to a user statement
 	 *  @param statement (the user statement)
 	 * 	@return a response based on the rules given */
-	public String getResponse(String statement)
+	public int getResponse(String statement)
 	{
 		int response = 0;
 
@@ -68,7 +68,7 @@ public class TextReader
 		}
 		else
 		{
-			response =10;
+			response = 10;
 		}
 		return response;
 	}
