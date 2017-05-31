@@ -1,13 +1,10 @@
 public class Cleric extends Character
 {
-	int con;
-	int heal;
-	int attack;
 	public Cleric ()
 	{
-		con = 8 + diceRoll(8);
-		heal = diceRoll(8); 
-		attack = diceRoll(8);
+		int con = 8 + diceRoll(8);
+		int heal = diceRoll(8); 
+		int attack = diceRoll(8);
 		initStat("HP", con);
 		initStat("MP", 2);
 		initStat("Dice", 8);

@@ -1,14 +1,11 @@
 public class Barbarian extends Character
 {
-	int con;
-	int armor; 
-	int attack;
 	public Barbarian ()
 	{
 		super();
-		con = diceRoll(12);
-		armor = diceRoll(12); 
-		attack = diceRoll(12);
+		int con = diceRoll(12);
+		int armor = diceRoll(12); 
+		int attack = diceRoll(12);
 		initStat("HP", con);
 		initStat("MP", 0);
 		initStat("Dice", 6);

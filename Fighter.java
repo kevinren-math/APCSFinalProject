@@ -1,13 +1,10 @@
 public class Fighter extends Character
 {
-	int con;
-	int attack;
-	int armor;
 	public Fighter ()
 	{
-		con = 10 + diceRoll(10);
-		attack = diceRoll(10);
-		armor = diceRoll(10);
+		int con = 10 + diceRoll(10);
+		int attack = diceRoll(10);
+		int armor = diceRoll(10);
 		initStat("HP", con);
 		initStat("MP", 1);
 		initStat("Dice", 10);

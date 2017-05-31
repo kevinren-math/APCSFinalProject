@@ -1,13 +1,10 @@
 public class Mage extends Character
 {
-	int con;
-	int ability;
-	int heal;
 	public Mage ()
 	{
-		con = 6 + diceRoll(6);
-		ability = diceRoll(6);
-		heal = diceRoll(6);
+		int con = 6 + diceRoll(6);
+		int ability = diceRoll(6);
+		int heal = diceRoll(6);
 		initStat("HP", con);
 		initStat("MP", 3);
 		initStat("Dice", 6);	
