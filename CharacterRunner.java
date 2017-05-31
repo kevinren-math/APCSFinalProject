@@ -13,6 +13,7 @@ public class CharacterRunner {
 			System.out.println(ch.status() + "\n");
 		}
 		System.out.println(d.status() + "\n");
+		System.out.println("\u2764");
 		
 	}
 }

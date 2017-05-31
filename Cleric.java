@@ -2,14 +2,17 @@ public class Cleric extends Character
 {
 	int con;
 	int heal;
+	int attack;
 	public Cleric ()
 	{
 		con = 8 + diceRoll(8);
 		heal = diceRoll(8); 
+		attack = diceRoll(8);
 		initStat("HP", con);
 		initStat("MP", 2);
 		initStat("Dice", 8);
 		initStat("Heal", heal); 
+		initStat("Attack", attack);
 		initStat("Search", 2); //investigates
 	}
 	
@@ -29,6 +32,7 @@ public class Cleric extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
+		str += "\n" + formatSkill("Attack");
 		str += "\n" + formatSkill("Heal");
 		str += "\n" + formatStat("Search");
 		return str;
