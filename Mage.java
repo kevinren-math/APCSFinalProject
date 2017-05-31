@@ -2,11 +2,12 @@ public class Mage extends Character
 {
 	int con;
 	int ability;
+	int heal;
 	public Mage ()
 	{
-		super();
 		con = 6 + diceRoll(6);
 		ability = diceRoll(6);
+		heal = diceRoll(6);
 		initStat("HP", con);
 		initStat("MP", 3);
 		initStat("Dice", 6);	
@@ -32,6 +33,7 @@ public class Mage extends Character
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
 		str += "\n" + formatSkill("Ability Power");
+		str += "\n" + formatSkill("Heal");
 		str += "\n" + formatStat("Search");
 		return str;
 	}
