@@ -23,10 +23,10 @@ public class DungeonMaster extends Character
 	public String status()
 	{
 		String str = "Type: " + type();
-		str += "\n" + formatSkills("Heal");
-		str += "\n" + formatSkills("Armor");
-		str += "\n" + formatSkills("Attack");
-		str += "\n" + formatSkills("Ability Power");
+		str += "\n" + formatSkill("Heal");
+		str += "\n" + formatSkill("Armor");
+		str += "\n" + formatSkill("Attack");
+		str += "\n" + formatSkill("Ability Power");
 		return str;
 	}
 
