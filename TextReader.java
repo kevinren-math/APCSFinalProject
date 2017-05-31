@@ -68,7 +68,7 @@ public class TextReader
 		}
 		else
 		{
-			response =10 ;
+			response = 10;
 		}
 		return response;
 	}
