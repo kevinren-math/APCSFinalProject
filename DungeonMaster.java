@@ -8,7 +8,7 @@ public class DungeonMaster extends Character
 		super();
 		
 		Barbarian barbarian = new Barbarian();
-		armor = (barbarian.getArmor()) + ((barbarian.getArmor())/2);
+		armor = (barbarian.get("armor")) + ((barbarian.get("armor"))/2);
 		initStat("Armor", armor);
 		
 		Cleric cleric = new Cleric();
