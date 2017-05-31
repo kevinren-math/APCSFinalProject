@@ -20,8 +20,7 @@ public class MissionScript extends GameScript
 	{
 		kb = new Scanner(System.in);
 		System.out.println("You wake up in vast plain in the middle of nowhere. As you look around you see the plain extends for 100s of miles and on the horizon all around you, you see mountains peaks. As you try and orient yourself and figure out how you got there you see a dark spot in the sky above you coming closer towards you. As it gets closer you realize that it is a large dragon. What do you do?");
-		String response = kb.nextLine();
-		String 
+		String response = kb.nextLine(); 
 		if(response.getResponse() == 0)
 		{
 			System.out.println("That is not a valid response please try again");
