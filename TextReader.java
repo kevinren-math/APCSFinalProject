@@ -1,3 +1,8 @@
+enum Response {
+	Null, Nothing, Attack, Defend, Investigate, Heal, HealBarbarian,
+	HealCleric, HealMage, HealFighter, Other
+}
+
 public class TextReader
 {
 	
@@ -6,9 +11,9 @@ public class TextReader
 	 * 	Gives a response to a user statement
 	 *  @param statement (the user statement)
 	 * 	@return a response based on the rules given */
-	public int getResponse(String statement)
+	public Response getResponse(String statement)
 	{
-		int response = 0;
+		Response response;
 
 		/** Exercise_01:
 		 * ==================================================
@@ -24,51 +29,51 @@ public class TextReader
 		 
 		if (statement.length() == 0)
 		{
-			response = 0;
+			response = Response.Null;
 		}
 		
 		else if (findKeyword(statement,"nothing") >= 0)
 		{
-			response = 1;
+			response = Response.Nothing;
 		}
 
 
 		else if (findKeyword(statement,"attack") >= 0)
 		{
-			response = 2;
+			response = Response.Attack;
 		}
 
 		else if (findKeyword(statement,"defend") >= 0)
 		{
-			response = 3;
+			response = Response.Defend;
 		}
 		else if (findKeyword(statement,"investigate") >= 0)
 		{
-			response = 4;
+			response = Response.Investigate;
 		}
 		else if (findKeyword(statement,"heal")>= 0)
 		{
-			response = 5;
+			response = Response.Heal;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"cleric") >=0)
 		{
-			response = 6;
+			response = Response.HealCleric;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"fighter") >=0)
 		{
-			response = 7;
+			response = Response.HealFighter;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"barbarian") >=0)
 		{
-			response = 8;
+			response = Response.HealBarbarian;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"mage") >=0)
 		{
-			response = 9;
+			response = Response.HealMage;
 		}
 		else
 		{
-			response = 10;
+			response = Response.Other;
 		}
 		return response;
 	}
