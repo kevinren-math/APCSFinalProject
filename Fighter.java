@@ -20,11 +20,7 @@ public class Fighter extends Character
 	{
 		return "Fighter";
 	}
-	
-	public int getAttack()
-	{
-		return attack;
-	}
+
 	
 	public String status()
 	{

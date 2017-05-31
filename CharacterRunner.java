@@ -12,8 +12,8 @@ public class CharacterRunner {
 			ch.decreaseStat("MP", 3);
 			System.out.println(ch.status() + "\n");
 		}
-		System.out.println(d.status() + "\n");
-		System.out.println("\u2764");
+
+
 		
 	}
 }

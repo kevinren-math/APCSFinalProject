@@ -5,6 +5,7 @@ public class Barbarian extends Character
 	int attack;
 	public Barbarian ()
 	{
+		super();
 		con = diceRoll(12);
 		armor = diceRoll(12); 
 		attack = diceRoll(12);
@@ -21,10 +22,16 @@ public class Barbarian extends Character
 		return "Barbarian";
 	}
 	
-	public int getArmor()
+	public void levelUp()
 	{
-		return armor;
+		int level = get("Lvl");
+		
+		
+		
 	}
+	
+
+	
 	
 	public String status()
 	{

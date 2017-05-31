@@ -11,6 +11,7 @@ public class Mage extends Character
 		initStat("HP", con);
 		initStat("MP", 3);
 		initStat("Dice", 6);	
+		initStat("Heal", heal);
 		initStat("Ability Power", ability); //attack
 		initStat("Search", 1);
 	}
@@ -20,12 +21,7 @@ public class Mage extends Character
 		return "Mage";
 	}
 	
-	public int getAbility()
-	{
-		return ability;
-	}
 
-	
 	public String status()
 	{
 		String str = "Type: " + type();

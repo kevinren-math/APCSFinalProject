@@ -21,10 +21,12 @@ public class Cleric extends Character
 		return "Cleric";
 	}
 	
-	public int getHeal()
+	public void levelUp()
 	{
-		return heal;
+		
 	}
+	
+
 	
 	public String status()
 	{
