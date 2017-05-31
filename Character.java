@@ -130,6 +130,11 @@ public class Character {
 		put("XP", totXP);
 		putInit("XP", startXP);
 		put("Lvl", level);
+		levelUp();
+	}
+	
+	public void levelUp() {
+		//Override
 	}
 	
 	/* set MP to full amount */
