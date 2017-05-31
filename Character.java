@@ -105,8 +105,7 @@ public class Character {
 		return String.format("%s: %d/%d", stat, get(stat), getInit(stat));
 	}
 	
-	public String formatSkills(String stat)
-	{
+	public String formatSkill(String stat) {
 		return String.format("%s: %d", stat, get(stat));
 	}
 

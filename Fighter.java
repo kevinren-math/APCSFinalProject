@@ -30,7 +30,7 @@ public class Fighter extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatSkills("Attack");
+		str += "\n" + formatSkill("Attack");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

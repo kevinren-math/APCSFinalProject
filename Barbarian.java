@@ -29,7 +29,7 @@ public class Barbarian extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatSkills("Armor");
+		str += "\n" + formatSkill("Armor");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

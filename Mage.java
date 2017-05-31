@@ -31,7 +31,7 @@ public class Mage extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatSkills("Ability Power");
+		str += "\n" + formatSkill("Ability Power");
 		str += "\n" + formatStat("Search");
 		return str;
 	}

@@ -29,7 +29,7 @@ public class Cleric extends Character
 		str += "\n" + formatLevel();
 		str += "\n" + formatStat("HP");
 		str += "\n" + formatStat("MP");
-		str += "\n" + formatSkills("Heal");
+		str += "\n" + formatSkill("Heal");
 		str += "\n" + formatStat("Search");
 		return str;
 	}
