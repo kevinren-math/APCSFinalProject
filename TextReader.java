@@ -6,7 +6,7 @@ public class TextReader
 	 * 	Gives a response to a user statement
 	 *  @param statement (the user statement)
 	 * 	@return a response based on the rules given */
-	public String getResponse(String statement)
+	public int getResponse(String statement)
 	{
 		int response = 0;
 
@@ -48,23 +48,23 @@ public class TextReader
 		}
 		else if (findKeyword(statement,"heal")>= 0)
 		{
-			response = 5
+			response = 5;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"cleric") >=0)
 		{
-			response = 6
+			response = 6;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"fighter") >=0)
 		{
-			response = 7
+			response = 7;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"barbarian") >=0)
 		{
-			response = 8
+			response = 8;
 		}
 		else if (findKeyword(statement,"target") >= 0 && findKeyword(statement,"heal") >=0 && findKeyword(statement,"mage") >=0)
 		{
-			response = 9
+			response = 9;
 		}
 		else
 		{
