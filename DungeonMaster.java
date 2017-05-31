@@ -20,6 +20,27 @@ public class DungeonMaster extends Character
 		initStat("Ability Power", ability);
 	}
 	
+	public int getResult(String character, String response)
+	{
+		if (diceRoll(response) < character.diceRoll(response) //Best Possible Choice
+		{
+			return 0;
+		}
+		
+	
+		else if (diceRoll(response) > character.diceRoll(response)) // Worst Possible Choice
+		{
+			return 1;
+		}
+		
+		else if (diceRoll(response) == character.diceRoll(response)) //The Meh Choice
+		{
+			return 2;
+		}
+
+		
+	}
+	
 	public String status()
 	{
 		String str = "Type: " + type();
