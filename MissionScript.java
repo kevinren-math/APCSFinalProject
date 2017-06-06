@@ -1,23 +1,19 @@
 import java.util.Scanner;
-public class MissionScript extends GameScript
+public class MissionScript
 {
 	static Scanner kb;
 	public static void main(String[]args)
 	{
 		kb = new Scanner(System.in);
 		//MissionScript();
+		MissionScript mission = new MissionScript();
+		mission.prompt();
 	}
-	public MissionScript() 
-	{
-		super();
-
-	}
-	
-	boolean first = false;
-	boolean second = false;
 	
 	public void prompt()
 	{
+		boolean first = false;
+		boolean second = false;
 		kb = new Scanner(System.in);
 		TextReader tr = new TextReader();
 		System.out.println("You wake up in vast plain in the middle of nowhere. As you look around you see the plain extends for 100s of miles and on the horizon all around you, you see mountains peaks. As you try and orient yourself and figure out how you got there you see a dark spot in the sky above you coming closer towards you. As it gets closer you realize that it is a large dragon. What do you do?");
@@ -26,15 +22,15 @@ public class MissionScript extends GameScript
 		switch (r) {
 			case None:
 				System.out.println("That is not a valid response please try again");
-				break;
+				break; 
 			case Defend:
 				//DungeonMaster.get();
-				if(true)
+				if(DungeonMaster.getResult2() == 0)
 				{
 					System.out.println("You are able to get your shields up in time but the dragon is able to smash through them knocking you and your group back(all take damage). The dragon lands on the ground and lets out a terrifying roar.");
 					first = true;
 				}
-				else
+				else(DungeonMaster.getResult2() == 1)
 				{
 					System.out.println("You are able to get your defenses up and are able to blocks the dragon's fire breath. The dragon then lands on the ground and lets out a terrifying roar.");
 					first = true;
@@ -93,15 +89,15 @@ public class MissionScript extends GameScript
 			switch (r) {
 				case Defend:
 					//DungeonMaster.get();
-					if(true)
+					if(DungeonMaster.getResult3() == 0)
 					{
 						System.out.println("The dragon lets out a large fire breath that pushes you back into the ring of fire(take massive damage). As you get burnt you rush out of the flames take off your armor(loose all armor stat)");
 					}
-					else if(true)
+					else if(DungeonMaster.getResult3() == 1)
 					{
 						System.out.println("The dragon takes a swipe at you and gets its claw stuck in your shield ripping it out of your hand(lose ¼ of armor)");
 					}
-					else
+					else if (DungeonMaster.getResult3() == 2)
 					{
 						System.out.println("You are able to dodge the dragon’s attack and the attacks have left the dragon vulnerable so you are able to get a few attacks on the dragons sides(dragon takes slight damage)");					
 					}
