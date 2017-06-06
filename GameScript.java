@@ -3,9 +3,11 @@ import java.io.*;
 public abstract class GameScript {
 	
 	/* Innate game characteristics */
-	static Character player;
+	static final int NUM_PLAYERS = 2;
+	static Character[] player;
 	final Scanner s;
 	final PrintStream out;
+	static int turn; //0 is Player 1, 1 is Player 2
 	
 	/* Standard variables */
 	public final String STATS = "S";
@@ -14,12 +16,15 @@ public abstract class GameScript {
 	public GameScript() {
 		s = new Scanner(System.in);
 		out = System.out;
+		turn = 0;
 	}
 	
 	/* main gameplay loop */
 	
 	/* ask the character what he/she wants to do */
-	public abstract void prompt();
+	public void prompt() {
+		out.println("Player " + (turn+1) + "'s turn.");
+	}
 	
 	/* current state of character (e.g. stats) */
 	public void state() {
@@ -41,6 +46,7 @@ public abstract class GameScript {
 					return Status.DIE;
 				else if (st == Status.COMPLETE)
 					return Status.COMPLETE;
+				turn = (turn + 1) % NUM_PLAYERS;
 			}
 		}
 	}

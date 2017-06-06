@@ -13,6 +13,7 @@ public class CharacterCreation extends GameScript {
 	
 	/* initialize the game */
 	public void prompt() {
+		super.prompt();
 		out.println("Enter the number of the character you select:");
 		for (int i = 0; i < list.size(); i++) {
 			out.printf("%2d. %s\n", i+1, list.get(i).initStats());
@@ -26,7 +27,7 @@ public class CharacterCreation extends GameScript {
 	public Status respond(String str) {
 		int selected = Integer.parseInt(str) - 1;
 		if (0 <= selected && selected < list.size()) {
-			player = list.get(selected);
+			GameScript.player[GameScript.turn] = list.get(selected);
 			out.println("You selected " + player.type() + "!");
 			return Status.COMPLETE;
 		} else {
