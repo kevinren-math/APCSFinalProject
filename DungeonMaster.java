@@ -39,6 +39,10 @@ public class DungeonMaster extends Character
 			return 2;
 		} 
 	}
+<<<<<<< HEAD
+=======
+	
+>>>>>>> b42d058740bd2857b29931c75c38ec4133d3d358
 	public int getResult2(String character, int response)
 	{
 		if (diceRoll(response) < diceRoll(character.get(response))) //Best Possible Choice
