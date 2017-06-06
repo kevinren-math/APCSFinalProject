@@ -6,7 +6,6 @@ public class MissionScript extends GameScript
 	DungeonMaster dungeonMaster;
 	public static void main(String[]args)
 	{
-		kb = new Scanner(System.in);
 		MissionScript mission = new MissionScript();
 		mission.prompt();
 	}
