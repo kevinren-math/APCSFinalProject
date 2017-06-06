@@ -1,91 +1,106 @@
 import java.util.Scanner;
-public class MissionScript
+public class MissionScript extends GameScript
 {
 	static Scanner kb;
+	boolean first, second;
+	TextReader tr;
 	public static void main(String[]args)
 	{
 		kb = new Scanner(System.in);
-		//MissionScript();
 		MissionScript mission = new MissionScript();
 		mission.prompt();
 	}
 	
+	public MissionScript() {
+		first = false;
+		second = false;
+		tr = new TextReader();
+	}
+	
 	public void prompt()
 	{
-		boolean first = false;
-		boolean second = false;
-		kb = new Scanner(System.in);
-		TextReader tr = new TextReader();
-		System.out.println("You wake up in vast plain in the middle of nowhere. As you look around you see the plain extends for 100s of miles and on the horizon all around you, you see mountains peaks. As you try and orient yourself and figure out how you got there you see a dark spot in the sky above you coming closer towards you. As it gets closer you realize that it is a large dragon. What do you do?");
-		String response = kb.nextLine();
-		Response r = tr.getResponse(response);
-		switch (r) {
-			case None:
-				System.out.println("That is not a valid response please try again");
-				break; 
-			case Defend:
-				//DungeonMaster.get();
-				if(DungeonMaster.getResult2() == 0)
-				{
-					System.out.println("You are able to get your shields up in time but the dragon is able to smash through them knocking you and your group back(all take damage). The dragon lands on the ground and lets out a terrifying roar.");
-					first = true;
-				}
-				else(DungeonMaster.getResult2() == 1)
-				{
-					System.out.println("You are able to get your defenses up and are able to blocks the dragon's fire breath. The dragon then lands on the ground and lets out a terrifying roar.");
-					first = true;
-				}
-				break;
-			case Heal:
-				System.out.println("You let out a healing aura that gives a slight buff to everyone's health.");
-				first = true;
-				break;
-			case HealCleric:
-				System.out.println("You target heal the cleric granting a large health buff.");
-				first = true;
-				break;
-			case HealFighter:
-				System.out.println("You target heal the fighter granting a large health buff.");
-				first = true;
-				break;
-			case HealBarbarian:
-				System.out.println("You target heal the barbarian granting a large health buff.");
-				first = true;
-				break;
-			case HealMage:
-				System.out.println("You target heal the mage granting a large health buff.");
-				first = true;
-				break;
-			case Investigate:
-				System.out.println("You are able to deduce that the dragon is big and scary, but it has a missing eye.");
-				first = true;
-				break;
-			case Attack:
-				//DungeonMaster.get();
-				if(true)
-				{
-					System.out.println(" You charge the dragon with your spear, but before you can throw it the dragon swipes you aside causing you to go tumbling away(take large amount of damage)");
-					second = true;
-				}
-				else
-				{
-					System.out.println("You charge the dragon with a sword and as the dragon comes in to attack you, you are able to roll under it and slash at its backside(dragon takes damage)");
-					second = true;
-				}
-				break;
-			case Status:
-				System.out.println(GameScript.player.status());
-				break;
-			default:
-				System.out.println("how did you get to this part of the code? Must be a bug");
-				break;
-		}
+		super.prompt();
+		if (!first && !second) {
+			System.out.println("You wake up in vast plain in the middle of nowhere. As you look around you see the plain extends for 100s of miles and on the horizon all around you, you see mountains peaks. As you try and orient yourself and figure out how you got there you see a dark spot in the sky above you coming closer towards you. As it gets closer you realize that it is a large dragon. What do you do?");
+		}		
 		
-		if(first == true)
+		if(first)
 		{
 			System.out.println("The dragon is now on the ground and creates a circle of fire around itself, trapping all of your party members inside of it. As the area around you heats up you know that you must kill the dragon soon if you have any hope of escape. What do you do?");
-			String response2 = kb.nextLine();
-			r = tr.getResponse(response2);
+			
+		}
+		else if(second)
+		{
+			System.out.println("Your attacks causes the dragon the stay in the air. The dragon scorches the area underneath it and you and your party are forced to scatter away. The dragon lands on the scorched area which is now on fire. If you go on the scorched earth you will take DOT ");
+			
+		}
+	}
+	
+	public Status respond(String response) {
+		Response r = tr.getResponse(response);
+		if (!first && !second) {
+			switch (r) {
+				case None:
+					System.out.println("That is not a valid response please try again");
+					break; 
+				case Defend:
+					//DungeonMaster.get();
+					if(DungeonMaster.getResult2() == 0)
+					{
+						System.out.println("You are able to get your shields up in time but the dragon is able to smash through them knocking you and your group back(all take damage). The dragon lands on the ground and lets out a terrifying roar.");
+						first = true;
+					}
+					else //if(DungeonMaster.getResult2() == 1)
+					{
+						System.out.println("You are able to get your defenses up and are able to blocks the dragon's fire breath. The dragon then lands on the ground and lets out a terrifying roar.");
+						first = true;
+					}
+					break;
+				case Heal:
+					System.out.println("You let out a healing aura that gives a slight buff to everyone's health.");
+					first = true;
+					break;
+				case HealCleric:
+					System.out.println("You target heal the cleric granting a large health buff.");
+					first = true;
+					break;
+				case HealFighter:
+					System.out.println("You target heal the fighter granting a large health buff.");
+					first = true;
+					break;
+				case HealBarbarian:
+					System.out.println("You target heal the barbarian granting a large health buff.");
+					first = true;
+					break;
+				case HealMage:
+					System.out.println("You target heal the mage granting a large health buff.");
+					first = true;
+					break;
+				case Investigate:
+					System.out.println("You are able to deduce that the dragon is big and scary, but it has a missing eye.");
+					first = true;
+					break;
+				case Attack:
+					//DungeonMaster.get();
+					if(true)
+					{
+						System.out.println(" You charge the dragon with your spear, but before you can throw it the dragon swipes you aside causing you to go tumbling away(take large amount of damage)");
+						second = true;
+					}
+					else
+					{
+						System.out.println("You charge the dragon with a sword and as the dragon comes in to attack you, you are able to roll under it and slash at its backside(dragon takes damage)");
+						second = true;
+					}
+					break;
+				case Status:
+					System.out.println(GameScript.player[GameScript.turn].status());
+					break;
+				default:
+					System.out.println("how did you get to this part of the code? Must be a bug");
+					break;
+			}
+		} else if (first) {
 			switch (r) {
 				case Defend:
 					//DungeonMaster.get();
@@ -144,15 +159,10 @@ public class MissionScript
 					}
 					break;
 				case Status:
-					System.out.println(GameScript.player.status());
+					System.out.println(GameScript.player[GameScript.turn].status());
 					break;
 			}
-		}
-		else if(second == true)
-		{
-			System.out.println("Your attacks causes the dragon the stay in the air. The dragon scorches the area underneath it and you and your party are forced to scatter away. The dragon lands on the scorched area which is now on fire. If you go on the scorched earth you will take DOT ");
-			String response2 = kb.nextLine();
-			r = tr.getResponse(response2);
+		} else if (second) {
 			switch (r) {
 				case Defend:
 					//DungeonMaster.get();
@@ -212,10 +222,7 @@ public class MissionScript
 				break;
 			}
 		}
-		else
-		{
-			
-		}
+		return Status.SURVIVE;
 	}
 	
 	public void die() {
