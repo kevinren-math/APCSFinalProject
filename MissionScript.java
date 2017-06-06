@@ -11,7 +11,7 @@ public class MissionScript extends GameScript
 		while (true) {
 			mission.prompt();
 			String res = s.nextLine();
-			if (res.equals("Q")) {
+			if (res.equals("quit")) {
 				return;
 			} else {
 				Status st = mission.respond(res);
