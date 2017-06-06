@@ -1,9 +1,9 @@
 import java.util.Scanner;
 public class MissionScript extends GameScript
 {
-	static Scanner kb;
 	boolean first, second;
 	TextReader tr;
+	DungeonMaster dungeonMaster;
 	public static void main(String[]args)
 	{
 		kb = new Scanner(System.in);
@@ -15,6 +15,7 @@ public class MissionScript extends GameScript
 		first = false;
 		second = false;
 		tr = new TextReader();
+		dungeonMaster = new DungeonMaster();
 	}
 	
 	public void prompt()
@@ -45,7 +46,7 @@ public class MissionScript extends GameScript
 					break; 
 				case Defend:
 					//DungeonMaster.get();
-					if(DungeonMaster.getResult2() == 0)
+					if(dungeonMaster.getResult2() == 0)
 					{
 						System.out.println("You are able to get your shields up in time but the dragon is able to smash through them knocking you and your group back(all take damage). The dragon lands on the ground and lets out a terrifying roar.");
 						first = true;
@@ -104,15 +105,15 @@ public class MissionScript extends GameScript
 			switch (r) {
 				case Defend:
 					//DungeonMaster.get();
-					if(DungeonMaster.getResult3() == 0)
+					if(dungeonMaster.getResult3() == 0)
 					{
 						System.out.println("The dragon lets out a large fire breath that pushes you back into the ring of fire(take massive damage). As you get burnt you rush out of the flames take off your armor(loose all armor stat)");
 					}
-					else if(DungeonMaster.getResult3() == 1)
+					else if(dungeonMaster.getResult3() == 1)
 					{
 						System.out.println("The dragon takes a swipe at you and gets its claw stuck in your shield ripping it out of your hand(lose ¼ of armor)");
 					}
-					else if (DungeonMaster.getResult3() == 2)
+					else if (dungeonMaster.getResult3() == 2)
 					{
 						System.out.println("You are able to dodge the dragon’s attack and the attacks have left the dragon vulnerable so you are able to get a few attacks on the dragons sides(dragon takes slight damage)");					
 					}
