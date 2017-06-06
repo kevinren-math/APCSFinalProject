@@ -28,7 +28,7 @@ public abstract class GameScript {
 	
 	/* current state of character (e.g. stats) */
 	public void state() {
-		out.println(player.status());
+		out.println(player[turn].status());
 	}
 	
 	/* returns COMPLETE if passes, DIE if dies */
