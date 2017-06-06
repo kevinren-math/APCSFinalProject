@@ -7,7 +7,20 @@ public class MissionScript extends GameScript
 	public static void main(String[]args)
 	{
 		MissionScript mission = new MissionScript();
-		mission.prompt();
+		Scanner s = new Scanner(System.in);
+		while (true) {
+			mission.prompt();
+			String res = s.nextLine();
+			if (res.equals("Q")) {
+				return;
+			} else {
+				Status st = mission.respond(res);
+				if (st == Status.DIE)
+					return;
+				else if (st == Status.COMPLETE)
+					return;
+			}
+		}
 	}
 	
 	public MissionScript() {
@@ -82,9 +95,9 @@ public class MissionScript extends GameScript
 					break;
 				case Attack:
 					//DungeonMaster.get();
-					if(true)
+					if(dungeonMaster.getResult2() == 0)
 					{
-						System.out.println(" You charge the dragon with your spear, but before you can throw it the dragon swipes you aside causing you to go tumbling away(take large amount of damage)");
+						System.out.println("You charge the dragon with your spear, but before you can throw it the dragon swipes you aside causing you to go tumbling away(take large amount of damage)");
 						second = true;
 					}
 					else
