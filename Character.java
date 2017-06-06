@@ -125,7 +125,7 @@ public class Character {
 		while (totXP >= startXP && level < MAXLEVEL) { //Level up
 			totXP -= startXP;
 			startXP++;
-			level++;
+			level++; //Change with levelUP
 		}
 		put("XP", totXP);
 		putInit("XP", startXP);
