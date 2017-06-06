@@ -22,32 +22,32 @@ public class DungeonMaster extends Character
 	
 	public int getResult3(String character, int response)
 	{
-		if (diceRoll(response) < diceRoll(character.get(response)) //Best Possible Choice
+		
+		if (diceRoll(response) < diceRoll(character.get(response))) //Best Possible Choice
 		{
 			return 0;
 		}
 		
 	
-		else if (diceRoll(response) > diceRoll(character.get(response)) // Worst Possible Choice
+		else if (diceRoll(response) > diceRoll(character.get(response))) // Worst Possible Choice
 		{
 			return 1;
 		}
 		
-		else if (diceRoll(response) == diceRoll(character.get(response)) //The Meh Choice
+		else if (diceRoll(response) == diceRoll(character.get(response))) //The Meh Choice
 		{
 			return 2;
 		} 
 	}
-	
-		public int getResult2(String character, int response)
+	public int getResult2(String character, int response)
 	{
-		if (diceRoll(response) < diceRoll(character.get(response)) //Best Possible Choice
+		if (diceRoll(response) < diceRoll(character.get(response))) //Best Possible Choice
 		{
 			return 0;
 		}
 		
 	
-		else if (diceRoll(response) > diceRoll(character.get(response)) // Worst Possible Choice
+		else if (diceRoll(response) > diceRoll(character.get(response))) // Worst Possible Choice
 		{
 			return 1;
 		}
