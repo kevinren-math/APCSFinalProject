@@ -117,15 +117,16 @@ public class MissionScript extends GameScript
 			switch (r) {
 				case Defend:
 					//DungeonMaster.get();
-					if(dungeonMaster.getResult3() == 0)
+					int result = dungeonMaster.getResult3();
+					if(result == 0)
 					{
 						System.out.println("The dragon lets out a large fire breath that pushes you back into the ring of fire(take massive damage). As you get burnt you rush out of the flames take off your armor(loose all armor stat)");
 					}
-					else if(dungeonMaster.getResult3() == 1)
+					else if(result == 1)
 					{
 						System.out.println("The dragon takes a swipe at you and gets its claw stuck in your shield ripping it out of your hand(lose ¼ of armor)");
 					}
-					else if (dungeonMaster.getResult3() == 2)
+					else
 					{
 						System.out.println("You are able to dodge the dragon’s attack and the attacks have left the dragon vulnerable so you are able to get a few attacks on the dragons sides(dragon takes slight damage)");					
 					}
