@@ -20,35 +20,40 @@ public class DungeonMaster extends Character
 		initStat("Ability Power", ability);
 	}
 	
-	public int getResult3(String character, int response)
+	public int getResult3()
 	{
-		
-		if (diceRoll(response) < diceRoll(character.get(response))) //Best Possible Choice
+		int response = 20;
+		int roll1 = diceRoll(response);
+		int roll2 = diceRoll(response);
+		if (roll1 < roll2) //Best Possible Choice
 		{
 			return 0;
 		}
 		
 	
-		else if (diceRoll(response) > diceRoll(character.get(response))) // Worst Possible Choice
+		else if (roll1 > roll2) // Worst Possible Choice
 		{
 			return 1;
 		}
 		
-		else if (diceRoll(response) == diceRoll(character.get(response))) //The Meh Choice
+		else //if (roll1 == roll2) //The Meh Choice
 		{
 			return 2;
 		} 
 	}
 	
-	public int getResult2(String character, int response)
+	public int getResult2()
 	{
-		if (diceRoll(response) < diceRoll(character.get(response))) //Best Possible Choice
+		int response = 20;
+		int roll1 = diceRoll(response);
+		int roll2 = diceRoll(response);
+		if (roll1 < roll2) //Best Possible Choice
 		{
 			return 0;
 		}
 		
 	
-		else if (diceRoll(response) > diceRoll(character.get(response))) // Worst Possible Choice
+		else //if (roll1 >= roll2) // Worst Possible Choice
 		{
 			return 1;
 		}
