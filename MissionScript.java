@@ -37,7 +37,7 @@ public class MissionScript extends GameScript
 			System.out.println("You wake up in vast plain in the middle of nowhere. As you look around you see the plain extends for 100s of miles and on the horizon all around you, you see mountains peaks. As you try and orient yourself and figure out how you got there you see a dark spot in the sky above you coming closer towards you. As it gets closer you realize that it is a large dragon. What do you do?");
 		}		
 		
-		if(first)
+		else if(first)
 		{
 			System.out.println("The dragon is now on the ground and creates a circle of fire around itself, trapping all of your party members inside of it. As the area around you heats up you know that you must kill the dragon soon if you have any hope of escape. What do you do?");
 			

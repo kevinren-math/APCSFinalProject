@@ -6,7 +6,7 @@ public class CharacterRunner {
 		Mage m = new Mage();
 		DungeonMaster d = new DungeonMaster();
 		
-		Character[] arr = {c, f, b, m};
+		Character[] arr = {c, f, b, m, d};
 		for (Character ch : arr) {
 			ch.takeDamage(1);
 			ch.decreaseStat("MP", 3);
